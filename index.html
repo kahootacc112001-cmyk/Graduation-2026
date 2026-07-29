@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ذكريات التخرج ٢٠٢٦</title>
+<meta name="description" content="موقع ذكريات حفل التخرج ٢٠٢٦ — ادخل على صفحة الذكريات الخاصة بأي خريج" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ خلفية زخرفية ثابتة ============ -->
+<div class="bg-veil" aria-hidden="true"></div>
+
+<!-- ============ اللوجو ============ -->
+<img
+  src="logo.png"
+  alt="شعار أبو مقار"
+  class="site-logo"
+  id="siteLogo"
+  onerror="this.style.display='none'"
+/>
+
+<!-- ============ الهيرو ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow" data-en="Class of">دفعة</p>
+    <h1 class="hero-title">
+      <span class="hero-year">٢٠٢٦</span>
+      <span class="hero-sub">ذكريات التخرج</span>
+    </h1>
+    <div class="hero-rule" aria-hidden="true"><span></span></div>
+    <p class="hero-copy">
+      كل خريج ترك بصمته… وكل بصمة ليها صفحة ذكريات خاصة بيها.
+      دوّر على اسم صاحبك، وسيبله كلمة تفضل معاه.
+    </p>
+    <p class="hero-count"><span id="gradCount">٠</span> خريج وخريجة تخرّجوا معانا</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span></span>
+  </div>
+</header>
+
+<!-- ============ شريط البحث ============ -->
+<div class="search-bar" id="searchBar">
+  <div class="search-inner">
+    <label class="search-field">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
+        <line x1="21" y1="21" x2="16.2" y2="16.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="اكتب اسم الخريج..."
+        autocomplete="off"
+        aria-label="ابحث عن خريج بالاسم"
+      />
+      <button type="button" id="clearSearch" class="clear-btn" aria-label="مسح البحث" hidden>&times;</button>
+    </label>
+  </div>
+</div>
+
+<!-- ============ شبكة الخريجين ============ -->
+<main class="grid-section">
+  <div id="gradGrid" class="grad-grid" role="list"></div>
+  <p id="emptyState" class="empty-state" hidden>
+    مفيش خريج بالاسم ده… جرّب تدور بحروف تانية.
+  </p>
+</main>
+
+<!-- ============ الفوتر ============ -->
+<footer class="site-footer">
+  <div class="footer-rule" aria-hidden="true"></div>
+  <p>بمحبة، لكل واحد كان جزء من الرحلة 🎓</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
