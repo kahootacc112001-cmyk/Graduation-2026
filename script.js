@@ -13,6 +13,8 @@
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById("clearSearch");
   const gradCountEl = document.getElementById("gradCount");
+  const searchGoBtn = document.getElementById("searchGoBtn");
+  const searchField = document.querySelector(".search-field");
 
   const PIN_CLASSES = ["pin-brick", "pin-teal", "pin-mustard"];
 
@@ -99,7 +101,41 @@
     clearBtn.hidden = q === "";
   }
 
+  /** يودّي لأول كارت ظاهر (مطابق للبحث) ويلمّعه، أو يهزّ الخانة لو مفيش نتيجة */
+  function goToFirstMatch() {
+    if (searchInput.value.trim() === "") return;
+
+    const firstMatch = grid.querySelector(".grad-card:not([hidden])");
+
+    if (!firstMatch) {
+      searchField.classList.remove("shake");
+      // إعادة تشغيل الأنيميشن حتى لو اتعمل قبل كده
+      void searchField.offsetWidth;
+      searchField.classList.add("shake");
+      return;
+    }
+
+    firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+    firstMatch.classList.remove("highlight");
+    void firstMatch.offsetWidth;
+    firstMatch.classList.add("highlight");
+    firstMatch.addEventListener(
+      "animationend",
+      () => firstMatch.classList.remove("highlight"),
+      { once: true }
+    );
+  }
+
   searchInput.addEventListener("input", (e) => applyFilter(e.target.value));
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      goToFirstMatch();
+    }
+  });
+
+  searchGoBtn.addEventListener("click", goToFirstMatch);
 
   clearBtn.addEventListener("click", () => {
     searchInput.value = "";
