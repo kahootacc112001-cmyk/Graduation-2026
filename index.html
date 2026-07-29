@@ -4,51 +4,53 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ذكريات التخرج ٢٠٢٦</title>
-<meta name="description" content="موقع ذكريات حفل التخرج ٢٠٢٦ — ادخل على صفحة الذكريات الخاصة بأي خريج" />
+<meta name="description" content="حائط ذكريات حفل التخرج ٢٠٢٦ — دوّر على صورة أي خريج وافتح دفتر ذكرياته" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ============ خلفية زخرفية ثابتة ============ -->
-<div class="bg-veil" aria-hidden="true"></div>
+<!-- ============ خلفية حائط الفلين ============ -->
+<div class="cork-bg" aria-hidden="true"></div>
 
 <!-- ============ اللوجو ============ -->
-<img
-  src="logo.png"
-  alt="شعار أبو مقار"
-  class="site-logo"
-  id="siteLogo"
-  onerror="this.style.display='none'"
-/>
+<div class="logo-badge">
+  <span class="pin pin-brick" aria-hidden="true"></span>
+  <img
+    src="logo.png"
+    alt="شعار أبو مقار"
+    class="site-logo"
+    id="siteLogo"
+    onerror="this.parentElement.style.display='none'"
+  />
+</div>
 
 <!-- ============ الهيرو ============ -->
 <header class="hero">
-  <div class="hero-inner">
-    <p class="eyebrow" data-en="Class of">دفعة</p>
+  <div class="hero-note">
+    <span class="pin pin-teal" aria-hidden="true"></span>
+    <span class="pin pin-mustard pin-left" aria-hidden="true"></span>
+    <p class="eyebrow">دفعة ٢٠٢٦</p>
     <h1 class="hero-title">
-      <span class="hero-year">٢٠٢٦</span>
       <span class="hero-sub">ذكريات التخرج</span>
     </h1>
-    <div class="hero-rule" aria-hidden="true"><span></span></div>
     <p class="hero-copy">
-      كل خريج ترك بصمته… وكل بصمة ليها صفحة ذكريات خاصة بيها.
+      كل خريج ترك بصمته… وكل بصمة ليها صورة ملزوقة على الحائط ده.
       دوّر على اسم صاحبك، وسيبله كلمة تفضل معاه.
     </p>
     <p class="hero-count"><span id="gradCount">٠</span> خريج وخريجة تخرّجوا معانا</p>
-  </div>
-  <div class="hero-scroll" aria-hidden="true">
-    <span></span>
   </div>
 </header>
 
 <!-- ============ شريط البحث ============ -->
 <div class="search-bar" id="searchBar">
   <div class="search-inner">
+    <span class="tape tape-left" aria-hidden="true"></span>
+    <span class="tape tape-right" aria-hidden="true"></span>
     <label class="search-field">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
@@ -66,8 +68,8 @@
   </div>
 </div>
 
-<!-- ============ شبكة الخريجين ============ -->
-<main class="grid-section">
+<!-- ============ حائط الصور ============ -->
+<main class="board-section">
   <div id="gradGrid" class="grad-grid" role="list"></div>
   <p id="emptyState" class="empty-state" hidden>
     مفيش خريج بالاسم ده… جرّب تدور بحروف تانية.
@@ -76,7 +78,7 @@
 
 <!-- ============ الفوتر ============ -->
 <footer class="site-footer">
-  <div class="footer-rule" aria-hidden="true"></div>
+  <span class="tape tape-center" aria-hidden="true"></span>
   <p>بمحبة، لكل واحد كان جزء من الرحلة 🎓</p>
 </footer>
 
