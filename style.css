@@ -283,14 +283,63 @@ input:focus-visible,
   box-shadow: 0 10px 22px -10px rgba(0,0,0,0.45), 0 0 0 2px var(--brick);
 }
 
+.search-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0.2rem;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 180ms var(--ease), transform 120ms var(--ease);
+}
+
+.search-icon-btn:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+.search-icon-btn:active {
+  transform: scale(0.9);
+}
+
 .search-icon {
   width: 19px;
   height: 19px;
   flex-shrink: 0;
   color: var(--ink-soft);
+  pointer-events: none;
 }
 
 .search-field:focus-within .search-icon { color: var(--brick); }
+
+/* لما مفيش نتيجة ودست على أيقونة البحث */
+.search-field.shake {
+  animation: shake-field 400ms var(--ease);
+}
+
+@keyframes shake-field {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* لما توصل لأول كارت مطابق */
+.grad-card.highlight {
+  animation: highlight-pop 1100ms var(--ease);
+  z-index: 6;
+}
+
+@keyframes highlight-pop {
+  0%   { transform: rotate(var(--tilt)) scale(1); box-shadow: 0 10px 18px -8px rgba(0,0,0,0.45); }
+  25%  { transform: rotate(0deg) scale(1.12); box-shadow: 0 0 0 4px var(--brick), 0 24px 34px -14px rgba(0,0,0,0.55); }
+  70%  { transform: rotate(0deg) scale(1.12); box-shadow: 0 0 0 4px var(--brick), 0 24px 34px -14px rgba(0,0,0,0.55); }
+  100% { transform: rotate(var(--tilt)) scale(1); box-shadow: 0 10px 18px -8px rgba(0,0,0,0.45); }
+}
 
 #searchInput {
   flex: 1;
@@ -351,10 +400,6 @@ input:focus-visible,
   transition: transform 320ms var(--ease), box-shadow 320ms var(--ease);
   animation: card-in 560ms var(--ease) both;
   animation-delay: calc(var(--i, 0) * 28ms);
-}
-
-.grad-card[hidden] {
-  display: none;
 }
 
 @keyframes card-in {
