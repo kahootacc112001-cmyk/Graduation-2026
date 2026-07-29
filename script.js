@@ -1,7 +1,7 @@
 /* =========================================================
    ذكريات التخرج ٢٠٢٦ — منطق الموقع
-   - يبني كروت الخريجين من data.js
-   - يجرب يحمّل صورة كل خريج، ولو مش موجودة بيسيب الأفاتار الملوّن
+   - يبني بولارويدات الخريجين من data.js ويدبّسها على الحائط
+   - يجرب يحمّل صورة كل خريج، ولو مش موجودة بيسيب حروفه مكتوبة بخط اليد
    - بحث فوري وهما بيكتبوا، من غير زرار
    ========================================================= */
 
@@ -14,7 +14,12 @@
   const clearBtn = document.getElementById("clearSearch");
   const gradCountEl = document.getElementById("gradCount");
 
-  const AVATAR_CLASSES = 6; // avatar-1 .. avatar-6 من الـ CSS، بتتكرر بالدور
+  const PIN_CLASSES = ["pin-brick", "pin-teal", "pin-mustard"];
+
+  const ARABIC_DIGITS = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+  function toArabicDigits(n) {
+    return String(n).replace(/[0-9]/g, (d) => ARABIC_DIGITS[+d]);
+  }
 
   /** يرجّع أول حرفين مميزين من الاسم (زي "M.A" لـ "Mira Adel") */
   function getInitials(name) {
@@ -31,30 +36,27 @@
     card.target = "_blank";
     card.rel = "noopener noreferrer";
     card.className = "grad-card";
-    card.style.setProperty("--avatar", `var(--avatar-${(index % AVATAR_CLASSES) + 1})`);
     card.style.setProperty("--i", index);
     card.setAttribute("role", "listitem");
     card.dataset.name = grad.name.toLowerCase();
     card.dataset.college = (grad.college || "").toLowerCase();
 
+    const pinClass = PIN_CLASSES[index % PIN_CLASSES.length];
+
     card.innerHTML = `
-      <div class="avatar-wrap">
-        <div class="seal-ring" aria-hidden="true">
-          <svg viewBox="0 0 76 76">
-            <circle cx="38" cy="38" r="36" />
-          </svg>
-        </div>
-        <div class="avatar">
-          <span class="avatar-initials">${getInitials(grad.name)}</span>
-          <img alt="" loading="lazy" />
-        </div>
+      <span class="pin ${pinClass}" aria-hidden="true"></span>
+      <div class="photo-frame">
+        <span class="initials">${getInitials(grad.name)}</span>
+        <img alt="" loading="lazy" />
       </div>
-      <div class="grad-name">${grad.name}</div>
-      ${grad.college ? `<div class="grad-college">${grad.college}</div>` : ""}
-      <div class="grad-cta">افتح دفتر الذكريات ↞</div>
+      <div class="grad-caption">
+        <div class="grad-name">${grad.name}</div>
+        ${grad.college ? `<div class="grad-college">${grad.college}</div>` : ""}
+        <div class="grad-cta">افتح دفتر الذكريات ↞</div>
+      </div>
     `;
 
-    // محاولة تحميل الصورة الحقيقية؛ لو فشلت (404) نسيب الأفاتار الملوّن زي ما هو
+    // محاولة تحميل الصورة الحقيقية؛ لو فشلت (404) نسيب الحروف المكتوبة بخط اليد زي ما هي
     if (grad.photo) {
       const img = card.querySelector("img");
       const probe = new Image();
@@ -63,7 +65,7 @@
         img.classList.add("loaded");
       };
       probe.onerror = () => {
-        /* الصورة لسه مش متضافة — الأفاتار الملوّن هو اللي هيفضل ظاهر */
+        /* الصورة لسه مش متضافة — الحروف المكتوبة هي اللي هتفضل ظاهرة */
       };
       probe.src = grad.photo;
     }
@@ -76,7 +78,7 @@
     const frag = document.createDocumentFragment();
     GRADUATES.forEach((grad, i) => frag.appendChild(buildCard(grad, i)));
     grid.appendChild(frag);
-    gradCountEl.textContent = GRADUATES.length;
+    gradCountEl.textContent = toArabicDigits(GRADUATES.length);
   }
 
   /** فلترة فورية حسب الاسم (وبتشمل الكلية كمان لسهولة الدور) */
