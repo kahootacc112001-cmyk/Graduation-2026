@@ -150,7 +150,13 @@ const GRADUATES = [
     name: "Sandra George",
     college: "فنون جميلة (عمارة)",
     link: "https://sandrageorge2026.daftarna.net/",
-    photo: "photos/025.jpg"
+    photo: "photos/025.jpeg"
+  },
+  {
+    name: "Madonna Maged",
+    college: "ألسن",
+    link: "https://madonnamaged2026.daftarna.net/",
+    photo: "photos/026.jpeg"
   },
   {
     name: "Hedra Atif",
@@ -229,5 +235,11 @@ const GRADUATES = [
     college: "علاج طبيعي",
     link: "https://keroadwar2026.daftarna.net/",
     photo: "photos/13.jpeg"
+  },
+  {
+    name: "Mina Hany",
+    college: "طب أسنان",
+    link: "https://minahany2026.daftarna.net/",
+    photo: "photos/14.jpeg"
   },
 ];
