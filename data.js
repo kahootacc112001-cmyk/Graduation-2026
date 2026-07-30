@@ -183,9 +183,9 @@ const GRADUATES = [
     photo: "photos/5.jpeg"
   },
   {
-    name: "Maro Jakob",
+    name: "Maro Jacob",
     college: "إدارة أعمال",
-    link: "https://marojakob2026.daftarna.net/",
+    link: "https://marojacob2026.daftarna.net/",
     photo: "photos/6.jpeg"
   },
   {
